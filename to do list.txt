@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>my to do list</title>
+<style>
+.head{background-color: red; height: 150px; width: 100%;}
+#h1{color: purple; position: center;}
+.text{width: 60%; height: 30px; margin-top: 40px; margin-left: 20px;}
+.btn{height: 40px; width: 50px; background-color: blue; color: white;}
+.btn:hover{background-color: pink;}
+.list{font-size: 30px; padding: 30px; line-height: 1.8; list-style-type: none; cursor: pointer;}
+ul li:nth-child(odd){background-color: #CCCCCC;}
+ul li:nth-child(even){background-color: #808080;}
+ul li:hover{background-color: yellow;}
+.close{color: white; position: absolute; margin-left: 85%;  cursor: pointer;}
+.close:hover{background-color: red; }
+ul li.check{background-color:  #9999ff; text-decoration: line-through; color: white;  }
+ul li.check:before{content: ""; border-color: red; width: 10px; height: 10px; }
+
+</style>
+</head>
+<body>
+<h1>MY TO DO list</h1>
+<div class="head"><br>
+<input type="text" class="text" id="my" placeholder="title....">
+<button class="btn" onclick="ne()">Add</button>
+</div>
+<i><ul class="list" id="myy">
+<li>college</li>
+<li>dance</li>
+<li>bank</li>
+<li>sleep</li>
+</ul></i>
+<script>
+var nodee=document.getElementsByTagName("LI");
+var i;
+for(i=0;i<nodee.length;i++)
+{
+var span=document.createElement("SPAN");
+var txt=document.createTextNode("\u00D7");
+span.className="close";
+span.appendChild(txt);
+nodee[i].appendChild(span);
+}
+var hide=document.getElementsByClassName("close");
+for(i=0;i<hide.length;i++)
+{
+	hide[i].onclick=function()
+	{
+		var div=this.parentElement;
+		div.style.display="none";
+	}
+}
+var lis = document.querySelector('ul');
+lis.addEventListener("click",function(ev)
+{
+	if(ev.target.tagName==="LI")
+	{
+		ev.target.classList.toggle("check",true);
+		var sp=document.createElement("SP");
+var tx=document.createTextNode("\u2713");
+sp.className="cl";
+sp.appendChild(tx);
+nodee.appendChild(sp);
+	}
+},false);
+function ne()
+{
+	var lii=document.createElement("li");
+var input=document.getElementById("my").value;
+var t=document.createTextNode(input);
+
+lii.appendChild(t);
+if(input==" ")
+alert("enter the text");
+else
+{
+document.getElementById("myy").appendChild(lii);
+}
+document.getElementById("my").value=" ";
+var span=document.createElement("SPAN");
+var txt=document.createTextNode("\u00D7");
+span.className="close";
+span.appendChild(txt);
+lii.appendChild(span);
+var hide=document.getElementsByClassName("close");
+for(i=0;i<hide.length;i++)
+{
+	hide[i].onclick=function()
+	{
+		var div=this.parentElement;
+		div.style.display="none";
+	}
+}
+}
+
+
+</script>
+
+</body>
+</html>
